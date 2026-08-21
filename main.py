@@ -1,9 +1,4 @@
-"""
-FastAPI app: ask a question, get an answer grounded in your documents.
 
-No frontend needed — use the auto-generated Swagger UI at /docs to
-test it, same as the support-copilot project.
-"""
 import os
 from fastapi import FastAPI
 from dotenv import load_dotenv
@@ -57,7 +52,7 @@ def chat(req: ChatRequest):
     if not chunks:
         return ChatResponse(
             answer="I don't have any documents ingested yet — run "
-                   "ingest.py first.",
+                   "ingest.py first.",print(os.environ.get("OPENAI_API_KEY"))
             sources=[],
         )
 

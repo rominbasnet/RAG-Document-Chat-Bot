@@ -1,9 +1,4 @@
-"""
-Wraps OpenAI's embeddings endpoint. Kept in its own module so both
-ingest.py (embedding documents) and main.py (embedding the user's
-question) use the exact same model/settings — mismatched embedding
-models between ingestion and query time is a common RAG bug.
-"""
+
 import os
 from openai import OpenAI
 from dotenv import load_dotenv

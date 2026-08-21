@@ -1,12 +1,7 @@
 """
 Simple, dependency-light text chunker.
 
-Splits text into overlapping chunks of roughly `chunk_size` characters,
-trying to break on paragraph/sentence boundaries rather than mid-word
-where possible. Good enough for a demo RAG pipeline — production
-systems often use token-aware chunkers (tiktoken) or semantic
-chunking, but character-based chunking is easy to reason about and
-works fine for most text.
+
 """
 
 

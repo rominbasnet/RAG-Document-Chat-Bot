@@ -1,7 +1,4 @@
-"""
-Retrieval: given a query embedding, find the most similar chunks
-using pgvector's cosine distance operator (<=>).
-"""
+
 from db import get_connection, to_pgvector
 
 

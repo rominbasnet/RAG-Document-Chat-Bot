@@ -2,13 +2,7 @@
 Ingestion pipeline: reads files from ./docs, chunks them, embeds each
 chunk, and stores them in Postgres/pgvector.
 
-Run this whenever you add or change documents:
-    python ingest.py
 
-Supports .pdf, .txt, and .md files. To add Confluence/Notion later,
-you'd write a small function that pulls pages via their API and
-returns the same (source, text) pairs — chunking/embedding/storage
-stays identical.
 """
 import os
 import sys
