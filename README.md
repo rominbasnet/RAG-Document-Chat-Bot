@@ -130,16 +130,31 @@ pip install -r requirements.txt
 
 ## Running the Project
 
-Run the application with:
+From the repository root, start PostgreSQL with pgvector.
 
 ```bash
-python main.py
+docker compose up -d db
 ```
 
-If your project uses Docker:
+Set `OPENAI_API_KEY` in a local `.env` file. Once PostgreSQL is ready, index the files in `docs/`. This command uses the embeddings API and replaces the chunks from the previous ingestion.
 
 ```bash
-docker compose up
+python ingest.py
+```
+
+Serve the FastAPI application with Uvicorn.
+
+```bash
+python -m uvicorn main:app --reload
+```
+
+In a second terminal, check the server and ask a question.
+
+```bash
+curl http://127.0.0.1:8000/health
+curl -X POST http://127.0.0.1:8000/chat \
+  -H 'Content-Type: application/json' \
+  -d '{"question":"What does the document say about access control?"}'
 ```
 
 ## RAG Pipeline
@@ -179,12 +194,10 @@ The system retrieves relevant sections from the document and uses those sections
 
 ## Environment Variables
 
-If your selected LLM or embedding provider requires API credentials, store them in a `.env` file rather than committing them to Git.
-
-Example:
+Both document embeddings and chat answers use the OpenAI key in your local `.env` file.
 
 ```env
-API_KEY=your_api_key_here
+OPENAI_API_KEY=your_api_key_here
 ```
 
 Make sure `.env` is included in `.gitignore`.
