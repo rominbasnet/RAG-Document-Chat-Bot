@@ -52,7 +52,7 @@ def chat(req: ChatRequest):
     if not chunks:
         return ChatResponse(
             answer="I don't have any documents ingested yet — run "
-                   "ingest.py first.",print(os.environ.get("OPENAI_API_KEY"))
+                   "ingest.py first.",
             sources=[],
         )
 
